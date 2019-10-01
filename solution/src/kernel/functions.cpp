@@ -9,6 +9,7 @@
 // include the VIVADO_HLS ap_int header
 #include "ap_int.h"
 
+typedef ap_uint<3> bit3_t;
 typedef ap_uint<4> bit4_t;  // label type
 typedef ap_uint<6> bit6_t;  // distance type
 // data type, i.e. training_data and testing_data
@@ -85,7 +86,7 @@ const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
   //
   // @param[in] : knn_set - 10 * K_CONST min distance values
   // @return : the digit label with most votes
-  bit4_t knn_vote( bit6_t knn_set[10 * K_CONST] )
+  bit3_t knn_vote( bit6_t knn_set[10 * K_CONST] )
   { 
     // This array keeps the occurences of each label(votes)
     int score[10]; 
@@ -96,7 +97,7 @@ const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
     // Find the K nearest neighbors
     for ( int k = 0; k < K_CONST; k++ ) { 
       bit6_t min_dist = 50;
-      bit4_t min_dist_id = 10;
+      bit3_t min_dist_id = 10;
       int  min_dist_record = K_CONST + 1;
       // find the min distance in knn_set[10 * K_CONST]
       for ( int i = 0; i < 10; i++ ) {
@@ -116,7 +117,7 @@ const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
 
     // Calculate the maximum score
     int max_score = 0; 
-    bit4_t min_index = 0;
+    bit3_t min_index = 0;
     for ( int i = 0; i < 10; ++i ) {
       if ( score[i] > max_score ) {
         max_score = score[i];
