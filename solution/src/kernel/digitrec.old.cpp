@@ -20,7 +20,7 @@ extern "C"
   //
   // @param[in] : input - the testing instance
   // @return : the recognized digit (0~9)
-  void DigitRec( digit* training_data, digit* testing_data, bit4_t* results) 
+  void DigitRec( digit* training_data, digit* testing_data, bit6_t* results) 
   {  
     // connection settings:
     // students DO NOT need to understand this

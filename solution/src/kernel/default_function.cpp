@@ -3,14 +3,6 @@
 #include <math.h>
 
 void default_function(ap_uint<64> test_image, ap_uint<64> train_images[10][1800], ap_uint<6> knn_mat[10][3]) {
-  #pragma HLS INTERFACE m_axi port=training_data offset=slave bundle=gmem
-  #pragma HLS INTERFACE m_axi port=testing_data offset=slave bundle=gmem
-  #pragma HLS INTERFACE m_axi port=results offset=slave bundle=gmem
-  #pragma HLS INTERFACE s_axilite port=training_data bundle=control
-  #pragma HLS INTERFACE s_axilite port=testing_data bundle=control
-  #pragma HLS INTERFACE s_axilite port=results bundle=control
-  #pragma HLS INTERFACE s_axilite port=return bundle=control
-
   for (ap_int<32> x = 0; x < 10; ++x) {
     for (ap_int<32> y = 0; y < 3; ++y) {
       knn_mat[x][y] = (ap_uint<6>)50;
