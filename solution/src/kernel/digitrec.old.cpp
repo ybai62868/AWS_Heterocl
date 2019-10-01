@@ -36,7 +36,7 @@ extern "C"
     bit6_t knn_set[10 * K_CONST];
 
     // for each of the test data
-    for ( int k = 0 ; k < NUM_TEST; k++){
+    L180: for ( int k = 0 ; k < NUM_TEST; k++){
       digit testing_instance = testing_data[k];
       // Initialize the knn set
       for ( int i = 0; i < 10 * K_CONST; i++ )
@@ -44,8 +44,8 @@ extern "C"
           knn_set[i] = 50; 
 
       // for each of the training data
-      for ( int i = 0; i < NUM_TRAINING; i++ ){
-        for ( int j = 0; j < 10; j++ ){
+      L1800: for ( int i = 0; i < NUM_TRAINING; i++ ){
+        L10: for ( int j = 0; j < 10; j++ ){
         digit training_instance =  training_data[j* NUM_TRAINING + i];
         // Update the KNN set
         update_knn( testing_instance, training_instance, &knn_set[j * K_CONST] );

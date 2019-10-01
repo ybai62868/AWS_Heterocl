@@ -86,7 +86,7 @@ const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
   //
   // @param[in] : knn_set - 10 * K_CONST min distance values
   // @return : the digit label with most votes
-  bit3_t knn_vote( bit6_t knn_set[10 * K_CONST] )
+  bit4_t knn_vote( bit6_t knn_set[10 * K_CONST] )
   { 
     // This array keeps the occurences of each label(votes)
     int score[10]; 
@@ -97,7 +97,7 @@ const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
     // Find the K nearest neighbors
     for ( int k = 0; k < K_CONST; k++ ) { 
       bit6_t min_dist = 50;
-      bit3_t min_dist_id = 10;
+      bit4_t min_dist_id = 10;
       int  min_dist_record = K_CONST + 1;
       // find the min distance in knn_set[10 * K_CONST]
       for ( int i = 0; i < 10; i++ ) {
