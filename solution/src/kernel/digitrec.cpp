@@ -6,9 +6,9 @@
 // As for sw_emu, it only copy digitrec.cpp to a separate directory and only search in it...
 // That why I'm using the absolute path...
 // Please change these two absolute paths to pass the sw_emu
-#include "/home/centos/src/project_data/lab_digitrec_aws/solution/src/host/typedefs.h"
-#include "/home/centos/src/project_data/lab_digitrec_aws/solution/src/kernel/functions.cpp"
-#include "./default_function.cpp"
+#include "/home/centos/src/project_data/aws_ap6/AWS_Heterocl/solution/src/host/typedefs.h"
+#include "/home/centos/src/project_data/aws_ap6/AWS_Heterocl/solution/src/kernel/functions.cpp"
+#include "/home/centos/src/project_data/aws_ap6/AWS_Heterocl/solution/src/kernel/default_function.cpp"
 
 extern "C" 
 {

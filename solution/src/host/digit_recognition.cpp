@@ -97,7 +97,6 @@ int main(int argc, char ** argv)
   // check results
   printf("Checking results:\n");
   check_results( results, expected, NUM_TEST );
-  // check_results2(results, expected, NUM_TEST);
     
   // print time
   long long elapsed = (end.tv_sec - start.tv_sec) * 1000000LL + end.tv_usec - start.tv_usec;   
