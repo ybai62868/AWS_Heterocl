@@ -8,6 +8,7 @@
 // Please change these two absolute paths to pass the sw_emu
 #include "/home/centos/src/project_data/lab_digitrec_aws/solution/src/host/typedefs.h"
 #include "/home/centos/src/project_data/lab_digitrec_aws/solution/src/kernel/functions.cpp"
+#include "/home/centos/src/project_data/lab_digitrec_aws/solution/src/kernel/default_function.cpp"
 //#include "./functions.cpp"
 
 extern "C" 
@@ -20,7 +21,7 @@ extern "C"
   //
   // @param[in] : input - the testing instance
   // @return : the recognized digit (0~9)
-  void DigitRec( digit* training_data, digit* testing_data, bit4_t* results) 
+  void DigitRec( digit* training_data, digit* testing_data, bit6_t* results) 
   {  
     // connection settings:
     // students DO NOT need to understand this
@@ -33,7 +34,7 @@ extern "C"
     #pragma HLS INTERFACE s_axilite port=return bundle=control
     
     // This array stores K minimum distances per training set
-    bit6_t knn_set[10 * K_CONST];
+    // bit6_t knn_set[10 * K_CONST];
 
     // for each of the test data
     for ( int k = 0 ; k < NUM_TEST; k++){
@@ -41,18 +42,18 @@ extern "C"
       // Initialize the knn set
       for ( int i = 0; i < 10 * K_CONST; i++ )
           // Note that the max distance is 49
-          knn_set[i] = 50; 
+          results[i] = 50; 
 
       // for each of the training data
       for ( int i = 0; i < NUM_TRAINING; i++ ){
         for ( int j = 0; j < 10; j++ ){
         digit training_instance =  training_data[j* NUM_TRAINING + i];
         // Update the KNN set
-        update_knn( testing_instance, training_instance, &knn_set[j * K_CONST] );
+        update_knn( testing_instance, training_instance, &results[j * K_CONST] );
         }
       } 
       // collect the results
-      results[k] = knn_vote(knn_set);
+      // results[k] = knn_vote(knn_set);
     }
   }
 
